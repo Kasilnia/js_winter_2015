@@ -1,0 +1,66 @@
+<html>
+<head>
+
+<style>
+    .edit_item {
+        display:none;
+    }
+    .name, .edit, .delete {
+        display:inline;
+    }
+    
+
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+
+
+</head>
+<body>
+
+<form id='add_task'>
+    <input type="text" id="new_task" />
+</form>
+
+
+<ul id='my_tasks_list'>
+
+</ul>
+
+
+
+</body>
+
+
+
+<script type="text/javascript">
+$( "#add_task" ).submit(function( event ) {
+    task = $('#new_task').val();
+    list_items_number = $('#my_tasks_list li.list_item').length;
+    $("#my_tasks_list").append('<li id="'+list_items_number+'" class="list_item"><div class="name">'+task+'</div><button class="Edit" onclick="editTask('+list_items_number+')">Edit</button><button class="delete" onclick="deleteTask('+list_items_number+')">Delete</button></li>');
+    $("#my_tasks_list").append('<li id="edit_'+list_items_number+'" class="edit_item"><form  id="form_'+list_items_number+'" action="javascript:saveTask('+list_items_number+')"><input type="text" value="'+task+'"/ ></form></li>');
+  event.preventDefault();
+});
+
+function editTask(id){
+    $('#'+id).hide();
+    $('#edit_'+id).show();
+};
+
+function saveTask(id){
+    new_val = $( "li#edit_"+id+" input" ).val();
+    $('#'+id+' .name').html(new_val);
+    $('#edit_'+id).hide();
+    $('#'+id).show();
+};
+
+function deleteTask(id){
+    $( "li#"+id ).remove();
+    $( "li#edit_"+id ).remove();
+};
+</script>
+
+
+</html>

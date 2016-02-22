@@ -1,0 +1,24 @@
+body {
+	margin-top: 5em;
+}
+
+.container {
+    display: none;
+}
+
+#total-price {
+	color: red;
+}
+
+#price-navbar, #price-basket, .basket-button {
+	display: inline;
+}
+
+#order input {
+	width: 100%;
+}
+
+#order .row {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
